@@ -1,0 +1,26 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+:root {
+  --primary-color: #f8d442;
+  --secondary-color: #feaf00;
+  --text-color: #000000;
+  --text-color-light: #ffffff;
+  --text-color-dark: #000000;
+  --font-family: "Poppins", sans-serif;
+}
+.bg-login {
+  background: linear-gradient(
+    -90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+}
+.btn-login {
+  background-color: #feaf00;
+}
+.btn-login:hover {
+  background-color: #f8d442;
+}
