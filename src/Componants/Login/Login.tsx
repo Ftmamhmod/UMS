@@ -18,9 +18,8 @@ export const Login = () => {
         data
       );
 
-      navigate("/home");
+      navigate("/dashboard");
       console.log("Login successful:", response.data);
-      // Handle successful login here (e.g., store token, redirect user)
     } catch (error) {
       console.error("Error during login:", error);
     }
@@ -52,6 +51,11 @@ export const Login = () => {
               />
               <label htmlFor="floatingInput">User name</label>
             </div>
+            {errors.username && (
+              <span className="text-danger text-start">
+                {errors.username.message}
+              </span>
+            )}
             <div className="form-floating">
               <input
                 type="password"
@@ -62,11 +66,11 @@ export const Login = () => {
               />
               <label htmlFor="floatingPassword">Password</label>
             </div>
-            {errors.username && (
-              <span className="text-danger">{errors.username.message}</span>
-            )}
             {errors.password && (
-              <span className="text-danger"> {errors.password.message}</span>
+              <span className="text-danger text-start">
+                {" "}
+                {errors.password.message}
+              </span>
             )}
             <button className="btn btn-login w-100  mt-3 text-white">
               SIGN IN
