@@ -17,7 +17,7 @@ export const SideBar = () => {
       </h4>
       <div className="sidebarLogo  text-center rounded-circle">
         <img src={img1} alt="logo" className="img-fluid rounded-circle" />
-        <h6>Karthi Madesh</h6>
+        <h6 className="p-2">Karthi Madesh</h6>
         <p className="text-warning">Admin</p>
       </div>
       <Menu
