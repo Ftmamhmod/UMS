@@ -1,4 +1,6 @@
+import axios from "axios";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 interface userFormData {
   name: string;
@@ -15,8 +17,18 @@ export const AddUser = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<userFormData>();
-  const onSubmit = (data: userFormData) => {
-    console.log(data);
+  const onSubmit = async (data: userFormData) => {
+    try {
+      const response = await axios.post(
+        "https://dummyjson.com/users/add",
+        data
+      );
+      console.log(response);
+      toast.success("User added successfully!");
+    } catch (error) {
+      console.error("Error adding user:", error);
+      toast.error("Failed to add user.");
+    }
   };
   return (
     <>

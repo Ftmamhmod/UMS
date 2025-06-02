@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 interface FormData {
   username: string;
@@ -17,11 +18,12 @@ export const Login = () => {
         "https://dummyjson.com/auth/login",
         data
       );
-
+      toast.success("Login successful!");
       navigate("/dashboard");
       console.log("Login successful:", response.data);
     } catch (error) {
       console.error("Error during login:", error);
+      toast.error("Login failed.");
     }
   };
   const navigate = useNavigate();
