@@ -4,6 +4,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { MdOutlineModeEdit } from "react-icons/md";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useNavigate } from "react-router-dom";
 interface User {
   id: number;
   firstName: string;
@@ -15,6 +16,7 @@ interface User {
   image: string;
 }
 export const UsersList = () => {
+  const navigate = useNavigate();
   const [users, setUsers] = useState<User[]>([]);
   const getUsers = async () => {
     const response = await axios.get("https://dummyjson.com/users");
@@ -43,11 +45,18 @@ export const UsersList = () => {
       console.error("Failed to delete user:", error);
     }
   };
+  const moveToAddUser = () => {
+    navigate("/dashboard/add-user");
+  };
   return (
     <div className="bg-body-tertiary p-3">
       <div className=" d-flex justify-content-between p-3 ">
         <h3>Users List</h3>
-        <button type="button" className="btn btn-login text-white ps-4 pe-4">
+        <button
+          onClick={moveToAddUser}
+          type="button"
+          className="btn btn-login text-white ps-4 pe-4"
+        >
           ADD NEW USER
         </button>
       </div>
