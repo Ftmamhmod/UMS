@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import img1 from "../../../public/pexels-photo-2379004 1.png";
 export const SideBar = () => {
   return (
-    <Sidebar className="h-100 sidebarContainer">
+    <Sidebar className="vh-100 fixed-top sidebarContainer">
       <h4 className="text-dark pt-2 pb-5 ">
         {" "}
         <span className="text-warning p-2">
