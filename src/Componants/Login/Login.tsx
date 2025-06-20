@@ -1,9 +1,6 @@
 import axios from "axios";
-
 import { useForm } from "react-hook-form";
-
 import { useNavigate } from "react-router-dom";
-
 import { toast } from "react-toastify";
 interface FormData {
   username: string;
@@ -21,9 +18,9 @@ export const Login = () => {
         "https://dummyjson.com/auth/login",
         data
       );
-      navigate("/dashboard");
-      localStorage.setItem("userToken", response?.data?.accessToken);
       toast.success("Login successful!");
+      navigate("/dashboard");
+      console.log("Login successful:", response.data);
     } catch (error) {
       console.error("Error during login:", error);
       toast.error("Login failed.");
@@ -35,6 +32,7 @@ export const Login = () => {
       <div className="row justify-content-center align-items-center vh-100">
         <div className="col-xl-3 col-md-5 bg-white text-center pt-4 pb-5 pe-3 ps-3 rounded-4 shadow">
           <h4 className="text-dark pt-2 pb-5 ">
+            {" "}
             <span className="text-warning p-2">
               <b>|</b>
             </span>

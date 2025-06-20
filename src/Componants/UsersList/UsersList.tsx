@@ -5,7 +5,6 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 interface User {
   id: number;
   firstName: string;
@@ -42,7 +41,6 @@ export const UsersList = () => {
         axios.delete(`https://dummyjson.com/users/${userId}`);
       }
       handleClose();
-      toast.success("Delete Successfully");
     } catch (error) {
       console.error("Failed to delete user:", error);
     }
