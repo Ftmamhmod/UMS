@@ -58,7 +58,7 @@ export const Login = () => {
                 {errors.username.message}
               </span>
             )}
-            <div className="form-floating">
+            <div className="form-floating border-warning">
               <input
                 type="password"
                 className="form-control"
