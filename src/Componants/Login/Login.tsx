@@ -1,10 +1,15 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthContext } from "../context/authContext";
 interface FormData {
   username: string;
   password: string;
+}
+interface AuthContextType {
+  saveUserData: () => void;
 }
 export const Login = () => {
   const {
@@ -12,21 +17,24 @@ export const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
+  const { saveUserData } = useContext(AuthContext) as AuthContextType;
   const onSubmit = async (data: FormData) => {
     try {
       const response = await axios.post(
         "https://dummyjson.com/auth/login",
         data
       );
+      localStorage.setItem("token", response.data.accessToken);
+      saveUserData();
       toast.success("Login successful!");
       navigate("/dashboard");
-      console.log("Login successful:", response.data);
     } catch (error) {
       console.error("Error during login:", error);
       toast.error("Login failed.");
     }
   };
   const navigate = useNavigate();
+
   return (
     <div className="bg-login container-fluid">
       <div className="row justify-content-center align-items-center vh-100">

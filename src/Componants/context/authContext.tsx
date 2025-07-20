@@ -24,7 +24,7 @@ export default function AuthContextProvider({
   const [userData, setUserData] = useState<User | null>(null);
 
   const saveUserData = () => {
-    const encodedToken = localStorage.getItem("userToken");
+    const encodedToken = localStorage.getItem("token");
     if (encodedToken) {
       const decodedToken = jwtDecode<User>(encodedToken);
       setUserData(decodedToken);
@@ -32,7 +32,7 @@ export default function AuthContextProvider({
   };
 
   useEffect(() => {
-    if (localStorage.getItem("userToken")) {
+    if (localStorage.getItem("token")) {
       saveUserData();
     }
   }, []);

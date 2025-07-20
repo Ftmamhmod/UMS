@@ -4,10 +4,10 @@ import { NavBar } from "../NavBar.tsx/NavBar";
 export const Layout = () => {
   return (
     <div className="d-flex">
-      <div>
+      <div className="">
         <SideBar />
       </div>
-      <div className="w-100">
+      <div className="w-100 ">
         <NavBar />
         <Outlet />
       </div>

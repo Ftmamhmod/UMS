@@ -4,10 +4,18 @@ import { PiGraduationCap } from "react-icons/pi";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
-import img1 from "../../../public/pexels-photo-2379004 1.png";
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
+interface User {
+  firstName: string;
+  lastName: string;
+  image: string;
+}
 export const SideBar = () => {
+  const { userData } = useContext(AuthContext) as { userData: User | null };
+
   return (
-    <Sidebar className="h-100 sidebarContainer">
+    <Sidebar className=" sidebarContainer ">
       <h4 className="text-dark pt-2 pb-5 ">
         {" "}
         <span className="text-warning p-2">
@@ -16,12 +24,18 @@ export const SideBar = () => {
         <b>UMS</b>
       </h4>
       <div className="sidebarLogo  text-center rounded-circle">
-        <img src={img1} alt="logo" className="img-fluid rounded-circle" />
-        <h6 className="p-2">Karthi Madesh</h6>
+        <img
+          src={userData?.image}
+          alt="logo"
+          className="img-fluid rounded-circle"
+        />
+        <h6 className="p-2">
+          {userData?.firstName} {userData?.lastName}
+        </h6>
         <p className="text-warning">Admin</p>
       </div>
       <Menu
-        className="ps-5"
+        className="d-flex flex-column justify-content-center h-auto align-items-center  "
         menuItemStyles={{
           button: {
             [`&.active`]: {
