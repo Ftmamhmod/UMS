@@ -11,7 +11,7 @@ interface userFormData {
   birthdate: string;
 }
 
-export const AddUser = () => {
+export const UserForm = () => {
   const {
     register,
     handleSubmit,
