@@ -61,7 +61,7 @@ export const SideBar = () => {
         </MenuItem>
         <MenuItem
           icon={<PiGraduationCap />}
-          component={<Link to="/dashboard/add-user" />}
+          component={<Link to="/dashboard/user-form" />}
         >
           {" "}
           Add User
